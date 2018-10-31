@@ -1,6 +1,7 @@
 class Nutricion
 
 	attr_reader :peso, :talla, :edad, :sexo, :ccintura, :ccadera
+	attr_writer :peso, :talla, :edad, :sexo, :ccintura, :ccadera
 
 	def initialize(peso, talla, edad, sexo, ccintura, ccadera)
 		@peso = Float(peso)
@@ -24,11 +25,11 @@ class Nutricion
 			return "#{x} < 18.5 -- Bajo peso -- Delgado"
 		elsif x >= 18.5 && x <= 24.9
 			return "18.5 < #{x} < 24.9 -- Adecuado -- Aceptable"
-		elsif x >= 25.0 && x <= 29.9
+		elsif x > 24.9 && x <= 29.9
 			return "25.0 < #{x} < 29.9 -- Sobrepeso -- Sobrepeso"
-		elsif x >= 30.0 && x <= 34.9
-			return "30.0 < #{x} < 34.9 -- Obesidad grado 1 -- Obesidad"
-		elsif x >= 40
+		elsif x > 29.9 && x <= 39.9
+			return "30.0 < #{x} < 39.9 -- Obesidad grado 1 -- Obesidad"
+		elsif x > 39.9
 			return " #{x} > 40 -- Obesidad grado 2 -- Obesidad"
 		end
 
@@ -39,7 +40,7 @@ class Nutricion
 	end
 
 	def relacion_cc
-		(ccintura / ccadera).round(1)
+		(ccintura / ccadera).round(2)
 	end
 
 
